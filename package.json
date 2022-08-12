@@ -1,0 +1,25 @@
+{
+  "name": "testeford",
+  "version": "1.0.0",
+  "description": "teste para ford",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorbrambilla/Teste-Ford.git"
+  },
+  "keywords": [
+    "node",
+    "clean",
+    "architecture",
+    "typescript"
+  ],
+  "author": "Victor Brambilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorbrambilla/Teste-Ford/issues"
+  },
+  "homepage": "https://github.com/victorbrambilla/Teste-Ford#readme"
+}
