@@ -1,4 +1,4 @@
 export type Filter = {
-  yers: string[];
+  years: string[];
   genres: string[];
 };
