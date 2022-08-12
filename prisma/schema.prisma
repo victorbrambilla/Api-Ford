@@ -12,10 +12,10 @@ datasource db {
 }
 
 model Movies {
-  id                       Int      @id @default(autoincrement())
+  id                       Int    @id @default(autoincrement())
   movie_title              String
   release_date             String
-  genre                    DateTime
+  genre                    String
   total_gross              Int
   inflation_adjusted_gross Int
 }
