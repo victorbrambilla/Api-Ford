@@ -4,7 +4,10 @@
   "description": "teste para ford",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node -r ts-node/register -r tsconfig-paths/register dist/main/server.js",
+    "dev": "ts-node src/main/server.ts",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
