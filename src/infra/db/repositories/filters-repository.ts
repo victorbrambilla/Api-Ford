@@ -8,8 +8,8 @@ export class FiltersRepository implements GetFiltersRepository {
     let years: string[] = [];
     let genres: string[] = [];
     getFilters.map((filter) => {
-      if (!years.includes(filter.release_date)) {
-        years.push(filter.release_date);
+      if (!years.includes(new Date(filter.release_date).getFullYear().toString())) {
+        years.push(new Date(filter.release_date).getFullYear().toString());
       }
       if (!genres.includes(filter.genre)) {
         genres.push(filter.genre);
