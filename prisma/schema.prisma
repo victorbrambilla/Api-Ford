@@ -16,6 +16,6 @@ model Movies {
   movie_title              String
   release_date             String
   genre                    String
-  total_gross              Int
-  inflation_adjusted_gross Int
+  total_gross              Int?
+  inflation_adjusted_gross Int?
 }
