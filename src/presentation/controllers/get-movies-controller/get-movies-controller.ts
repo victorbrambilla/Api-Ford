@@ -12,13 +12,13 @@ export class getMoviesControllers implements Controller {
       const years = request.filters.year;
       genres.forEach((genre) => {
         if (!filters.genres.includes(genre)) {
-          HttpHelper.BAD_REQUEST(new Error("Genre not found"));
+          HttpHelper.INVALID_PARAMETERS(new Error("Genre not found"));
           return;
         }
       });
       years.forEach((year) => {
         if (!filters.years.includes(year)) {
-          HttpHelper.BAD_REQUEST(new Error("Year not found"));
+          HttpHelper.INVALID_PARAMETERS(new Error("Year not found"));
           return;
         }
       });
