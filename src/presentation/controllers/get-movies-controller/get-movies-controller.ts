@@ -33,7 +33,7 @@ export class getMoviesControllers implements Controller {
       }
       return HttpHelper.OK(movies, "Movies received");
     } catch (error) {
-      return HttpHelper.BAD_REQUEST(error as Error);
+      return HttpHelper.SERVER_ERROR(error as Error);
     }
   }
 }

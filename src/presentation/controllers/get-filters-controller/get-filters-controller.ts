@@ -10,7 +10,7 @@ export class getFiltersController implements Controller {
       const filters = await this.getFilters.perform();
       return HttpHelper.OK(filters, "Filters received");
     } catch (error) {
-      return HttpHelper.BAD_REQUEST(error as Error);
+      return HttpHelper.SERVER_ERROR(error as Error);
     }
   }
 }
