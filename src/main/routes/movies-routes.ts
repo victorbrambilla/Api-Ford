@@ -1,12 +1,10 @@
 import { Router } from "express";
+import { expressRouterAdapter } from "../adapters";
+import { makeDbGetFiltersController, makeDbGetMoviesController } from "../factories/controller";
 
 const moviesRoutes = Router();
 
-moviesRoutes.get("/movies", (req, res) => {
-  res.send("movies");
-});
-moviesRoutes.get("/filters", (req, res) => {
-  res.send("filters");
-});
+moviesRoutes.get("/movies", expressRouterAdapter(makeDbGetMoviesController()));
+moviesRoutes.get("/filters", expressRouterAdapter(makeDbGetFiltersController()));
 
 export { moviesRoutes };
