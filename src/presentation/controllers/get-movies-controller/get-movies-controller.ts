@@ -1,4 +1,5 @@
 import { GetFilters, GetMovies } from "@/domain/use-cases";
+import { InvalidParametersError } from "@/presentation/errors";
 import { HttpHelper } from "@/presentation/helpers";
 import { Controller } from "@/presentation/protocols";
 
@@ -8,20 +9,19 @@ export class getMoviesControllers implements Controller {
   async handle(request: GetMoviesControllers.Request): Promise<any> {
     try {
       const filters = await this.getFilters.perform();
-      const genres = request.filters.genre;
-      const years = request.filters.year;
-      genres.forEach((genre) => {
-        if (!filters.genres.includes(genre)) {
-          HttpHelper.INVALID_PARAMETERS(new Error("Genre not found"));
-          return;
-        }
-      });
-      years.forEach((year) => {
+      const genres = request.filter.genre;
+      const years = request.filter.years;
+      for (let year of years) {
         if (!filters.years.includes(year)) {
-          HttpHelper.INVALID_PARAMETERS(new Error("Year not found"));
-          return;
+          return HttpHelper.INVALID_PARAMETERS(new InvalidParametersError(`Invalid year: ${year}`));
         }
-      });
+      }
+
+      for (let genre of genres) {
+        if (!filters.genres.includes(genre)) {
+          return HttpHelper.INVALID_PARAMETERS(new InvalidParametersError(`Invalid genre: ${genre}`));
+        }
+      }
       const movies = await this.getMovies.perform({
         filter: {
           genres: genres,
@@ -40,9 +40,9 @@ export class getMoviesControllers implements Controller {
 
 export namespace GetMoviesControllers {
   export type Request = {
-    filters: {
+    filter: {
       genre: string[];
-      year: string[];
+      years: string[];
     };
   };
 }
