@@ -1,4 +1,5 @@
 import { GetFiltersRepository } from "@/data/protocols/db";
+import { Movie } from "@/domain/models";
 import { prismaClient } from "../prismaClient";
 
 export class FiltersRepository implements GetFiltersRepository {
@@ -7,7 +8,7 @@ export class FiltersRepository implements GetFiltersRepository {
     const getFilters = await filtersCollection.findMany();
     let years: string[] = [];
     let genres: string[] = [];
-    getFilters.map((filter) => {
+    getFilters.map((filter: Movie) => {
       if (!years.includes(new Date(filter.release_date).getFullYear().toString())) {
         years.push(new Date(filter.release_date).getFullYear().toString());
       }
