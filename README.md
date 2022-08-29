@@ -1,6 +1,6 @@
 # Clean node api
 
-## Contruída com as seguintes tecnologias:
+## Construída com as seguintes tecnologias:
 - [x] Node 
 - [x] Typescript 
 - [x] Prisma
